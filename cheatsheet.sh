@@ -3,7 +3,7 @@
 bold=$(tput bold)
 normal=$(tput sgr0)
 
-command_path="/home/rvanscherpe/Documents/Owncloud/documents/Linux/commands/"
+command_path="/usr/local/share/cheatsheets/commands/"
 command_tmp=`find $command_path -name $1.md -print`
 
 if [ -z "$1" ]; then
@@ -20,7 +20,7 @@ if [ ! -z "$1" ] && [ -z "$2" ]; then
 fi
 
 if [ ! -z "$1" ] && [ ! -z "$2" ]; then
-	lines=( `ls $command_path/$1/* | awk -F "/" '{print $11}' |awk -F "." '{print $1}'` )
+	lines=( `ls $command_path/$1/* | awk -F "/" '{print $9}' |awk -F "." '{print $1}'` )
 	PS3="$prompt "
 	select opt in "${lines[@]}" "Quit" ; do 
    	if (( REPLY == 1 + ${#lines[@]} )) ; then
